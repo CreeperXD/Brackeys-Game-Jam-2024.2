@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://boygbm3lp8ymk"]
+
+[ext_resource type="Script" path="res://scripts/battery.gd" id="1_itvuk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r63j3"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
+material = SubResource("StandardMaterial3D_r63j3")
+
+[node name="Battery" type="CharacterBody3D" groups=["server_component"]]
+script = ExtResource("1_itvuk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_saqcw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3q0d")
+
+[connection signal="destroyed" from="." to="." method="_on_destroyed"]

@@ -9,6 +9,7 @@
 [node name="Defender" type="CharacterBody3D"]
 script = ExtResource("1_s7vfd")
 mouse_sensitivity = 0.5
+movement_speed = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 

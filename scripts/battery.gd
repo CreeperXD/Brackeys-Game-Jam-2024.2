@@ -4,4 +4,5 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_destroyed() -> void:
-	print("Game over!")
+	print("Battery destroyed!")
+	queue_free()

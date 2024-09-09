@@ -1,7 +1,8 @@
 class_name ServerComponent extends CyberObject
 
-func _ready() -> void:
-	destroyed.connect(_on_destroyed.bind())
+#This will override the _ready() in CyberObject
+#func _ready() -> void:
+	#pass
 
 func _process(delta: float) -> void:
 	pass

@@ -4,11 +4,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5iu32"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cnhi"]
 albedo_color = Color(0, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
-material = SubResource("StandardMaterial3D_5iu32")
+material = SubResource("StandardMaterial3D_0cnhi")
 
 [node name="CPU" type="CharacterBody3D" groups=["server_component"]]
 script = ExtResource("1_ykll7")

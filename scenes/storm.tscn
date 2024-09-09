@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce2jgh7h5al1l"]
+
+[ext_resource type="Script" path="res://scripts/storm.gd" id="1_1y44m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqy7l"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
+material = SubResource("StandardMaterial3D_fqy7l")
+
+[node name="STORM" type="CharacterBody3D"]
+script = ExtResource("1_1y44m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_saqcw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3q0d")
+
+[connection signal="destroyed" from="." to="." method="_on_destroyed"]

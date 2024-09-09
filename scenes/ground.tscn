@@ -5,6 +5,7 @@
 [sub_resource type="BoxMesh" id="BoxMesh_3uogw"]
 
 [node name="Ground" type="StaticBody3D"]
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_4m8jf")

@@ -11,6 +11,8 @@ albedo_color = Color(1, 1, 0, 1)
 material = SubResource("StandardMaterial3D_r63j3")
 
 [node name="Battery" type="CharacterBody3D" groups=["server_component"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_itvuk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwm6u8v4gg8ur"]
+[gd_scene load_steps=8 format=3 uid="uid://cwm6u8v4gg8ur"]
 
 [ext_resource type="PackedScene" uid="uid://dnyqfl4b0ujci" path="res://scenes/ground.tscn" id="1_3rdqe"]
 [ext_resource type="PackedScene" uid="uid://nwhdp6drjgjq" path="res://scenes/defender.tscn" id="2_w3n64"]
-[ext_resource type="PackedScene" uid="uid://di8qvchbobw4l" path="res://scenes/cpu.tscn" id="3_j8w5i"]
+[ext_resource type="PackedScene" uid="uid://di8qvchbobw4l" path="res://scenes/server_components/cpu.tscn" id="3_j8w5i"]
 [ext_resource type="PackedScene" uid="uid://ce2jgh7h5al1l" path="res://scenes/storm.tscn" id="4_ic2oj"]
-[ext_resource type="PackedScene" uid="uid://boygbm3lp8ymk" path="res://scenes/battery.tscn" id="5_ujvx4"]
-[ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/turret.tscn" id="6_rblm1"]
+[ext_resource type="PackedScene" uid="uid://boygbm3lp8ymk" path="res://scenes/server_components/battery.tscn" id="5_ujvx4"]
+[ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/turret.tscn" id="6_rblm1"]
+[ext_resource type="PackedScene" uid="uid://rbn50pjh8bmk" path="res://scenes/laser_beam.tscn" id="7_hkxot"]
 
 [node name="World" type="Node"]
 
@@ -32,3 +33,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49271, 9.53674e-07, 1.03676
 
 [node name="Turret" parent="." instance=ExtResource("6_rblm1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98461, 0.5, -1.31803)
+attack_range = 0.0
+
+[node name="LaserBeam" parent="." instance=ExtResource("7_hkxot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4416, 0, -1.28589)
+
+[node name="LaserBeam2" parent="." instance=ExtResource("7_hkxot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2609, 0, -1.28589)
+
+[node name="LaserBeam3" parent="." instance=ExtResource("7_hkxot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0225, 0, -1.28589)
+
+[node name="LaserBeam4" parent="." instance=ExtResource("7_hkxot")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3684, 0, -1.28589)

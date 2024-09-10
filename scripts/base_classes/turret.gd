@@ -16,9 +16,7 @@ func _process(delta: float) -> void:
 		target = search_closest_target("cyberattack")
 	else:
 		if position.distance_to(target.position) <= attack_range:
-			var target_vector: Vector3 = global_position.direction_to(target.position).rotated(Vector3.UP, PI / 2)
-			var target_basis: Basis = Basis.looking_at(target_vector)
-			basis = basis.slerp(target_basis, 0.5)
+			rotate_towards_target(target)
 			if current_attack_cooldown == 0:
 				attack_queued.emit()
 				current_attack_cooldown = initial_attack_cooldown

@@ -16,9 +16,11 @@ func _process(delta: float) -> void:
 	if target == null:
 		target = search_closest_target("server_component")
 	else:
-		if position.distance_to(target.position) <= attack_range and current_attack_cooldown == 0:
-			attack_queued.emit()
-			current_attack_cooldown = initial_attack_cooldown
+		if current_attack_cooldown == 0:
+			rotate_towards_target(target)
+			if position.distance_to(target.position) <= attack_range:
+				attack_queued.emit()
+				current_attack_cooldown = initial_attack_cooldown
 	
 	current_attack_cooldown -= delta
 

@@ -1,23 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce2jgh7h5al1l"]
+[gd_scene load_steps=5 format=3 uid="uid://48spr7ut5pxt"]
 
-[ext_resource type="Script" path="res://scripts/storm.gd" id="1_1y44m"]
+[ext_resource type="Script" path="res://scripts/brute_force.gd" id="1_r2qni"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqy7l"]
-albedo_color = Color(1, 0, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nbko"]
+albedo_color = Color(0.392157, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
-material = SubResource("StandardMaterial3D_fqy7l")
+material = SubResource("StandardMaterial3D_4nbko")
 
-[node name="STORM" type="CharacterBody3D" groups=["cyberattack"]]
+[node name="BruteForce" type="CharacterBody3D" groups=["cyberattack"]]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_1y44m")
-attack_strength = 100.0
+script = ExtResource("1_r2qni")
 attack_range = 1.0
-initial_attack_cooldown = 5.0
-movement_speed = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_saqcw")

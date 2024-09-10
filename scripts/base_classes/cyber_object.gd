@@ -25,4 +25,11 @@ func search_closest_target(group: StringName) -> CyberObject:
 	var distance_to_potential_targets: Array[float]
 	for potential_target in potential_targets:
 		distance_to_potential_targets.append(position.distance_to(potential_target.position))
+	if potential_targets.is_empty():
+		return null
 	return potential_targets[distance_to_potential_targets.find(distance_to_potential_targets.min())]
+
+func rotate_towards_target(target: CyberObject) -> void:
+	var target_vector: Vector3 = global_position.direction_to(target.position)
+	var target_basis: Basis = Basis.looking_at(target_vector.rotated(Vector3.UP, PI / 2))
+	basis = basis.slerp(target_basis, 0.5)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://rbn50pjh8bmk"]
 
-[ext_resource type="Script" path="res://scripts/base_classes/projectile.gd" id="1_gh5ve"]
+[ext_resource type="Script" path="res://scripts/laser_beam.gd" id="1_3bag4"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vrwaf"]
 height = 1.0
@@ -17,9 +17,10 @@ height = 1.0
 radial_segments = 16
 
 [node name="LaserBeam" type="Area3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 0
 collision_mask = 12
-script = ExtResource("1_gh5ve")
+script = ExtResource("1_3bag4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_vrwaf")

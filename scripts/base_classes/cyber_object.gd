@@ -20,7 +20,7 @@ func _on_integrity_changed(new_integrity: float) -> void:
 	if new_integrity == 0:
 		destroyed.emit()
 
-func search_closest_target(group: StringName) -> Node:
+func search_closest_target(group: StringName) -> CyberObject:
 	var potential_targets: Array[Node] = get_tree().get_nodes_in_group(group)
 	var distance_to_potential_targets: Array[float]
 	for potential_target in potential_targets:

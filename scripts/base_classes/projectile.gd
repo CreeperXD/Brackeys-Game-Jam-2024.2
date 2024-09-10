@@ -1,10 +1,7 @@
 class_name Projectile extends Area3D
 
-var caster: CyberObject
-var damage: float = 25
-
-func _ready() -> void:
-	body_entered.connect(_on_body_entered.bind())
-
-func _on_body_entered(body: CyberObject):
-	body.current_integrity -= damage
+var target: CyberObject
+var damage: float = 0
+var speed: float = 0
+var direction: Vector3 = Vector3.ZERO
+var lifetime: float = 1

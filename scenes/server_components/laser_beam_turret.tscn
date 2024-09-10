@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://yfsjrvb0jj6j"]
+
+[ext_resource type="Script" path="res://scripts/laser_beam_turret.gd" id="1_8g431"]
+[ext_resource type="PackedScene" uid="uid://rbn50pjh8bmk" path="res://scenes/laser_beam.tscn" id="2_lkucm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r63j3"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
+material = SubResource("StandardMaterial3D_r63j3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_dvg6w"]
+material = SubResource("StandardMaterial3D_r63j3")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="LaserBeamTurret" type="CharacterBody3D" groups=["server_component"]]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_8g431")
+laser_beam_scene = ExtResource("2_lkucm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_saqcw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3q0d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+mesh = SubResource("BoxMesh_dvg6w")
+
+[node name="FirePoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[connection signal="destroyed" from="." to="." method="_on_destroyed"]

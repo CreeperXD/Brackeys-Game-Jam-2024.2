@@ -12,7 +12,7 @@ var current_attack_cooldown: float = 0:
 var target: Cyberattack
 
 func _process(delta: float) -> void:
-	if target == null:
+	if not target:
 		target = search_closest_target("cyberattack")
 	else:
 		if position.distance_to(target.position) <= attack_range:

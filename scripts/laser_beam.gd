@@ -10,7 +10,9 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: CyberObject) -> void:
-	#print(str(self) + ": I hit " + str(body) + " and it still has an intergrity of " + str(body.current_integrity))
+	#If the attack speed of the turret is too fast, laser will somehow access a recently queue_free()-ed body
+	if not is_instance_valid(target):
+		return
 	if body.collision_layer == target.collision_layer:
 		body.current_integrity -= damage
 		queue_free()

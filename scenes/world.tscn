@@ -11,7 +11,6 @@
 [node name="World" type="Node"]
 
 [node name="Ground" parent="." instance=ExtResource("1_3rdqe")]
-transform = Transform3D(4.2821, 0, 0, 0, 1, 0, 0, 0, 4.25085, 0, 0, 0)
 
 [node name="Defender" parent="." instance=ExtResource("2_w3n64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20279, 0)
@@ -20,30 +19,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20279, 0)
 transform = Transform3D(1, 0, 0, 0, -0.371368, 0.928486, 0, -0.928486, -0.371368, 0, 0, 0)
 
 [node name="CPU" parent="." instance=ExtResource("3_j8w5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 1)
 
 [node name="STORM" parent="." instance=ExtResource("4_ic2oj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0.5, 0)
 movement_speed = 5.0
 
 [node name="Battery" parent="." instance=ExtResource("5_ujvx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37851, 1, -1.65774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37851, 0.5, -1.65774)
 
 [node name="Battery2" parent="." instance=ExtResource("5_ujvx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49271, 1, 1.03676)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49271, 0.5, 1.03676)
 
 [node name="LaserBeamTurret" parent="." instance=ExtResource("6_rblm1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+attack_strength = 50.0
 attack_range = 100.0
 
 [node name="BruteForce" parent="." instance=ExtResource("7_gvy4h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6234, 1, -6.58721)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6234, 0.5, -6.58721)
 
 [node name="BruteForce2" parent="." instance=ExtResource("7_gvy4h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8753, 1, 7.71707)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8753, 0.5, 7.71707)
 
 [node name="BruteForce3" parent="." instance=ExtResource("7_gvy4h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5782, 1, 11.6234)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5782, 0.5, 11.6234)
 
 [node name="BruteForce4" parent="." instance=ExtResource("7_gvy4h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7672, 1, -12.8979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7672, 0.5, -12.8979)

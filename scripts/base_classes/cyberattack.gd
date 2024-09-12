@@ -13,7 +13,7 @@ var current_attack_cooldown: float = 0:
 var target: ServerComponent
 
 func _process(delta: float) -> void:
-	if not target:
+	if not is_instance_valid(target):
 		target = search_closest_target("server_component")
 	else:
 		if current_attack_cooldown == 0:
@@ -25,7 +25,9 @@ func _process(delta: float) -> void:
 	current_attack_cooldown -= delta
 
 func _physics_process(delta: float) -> void:
-	if target and current_attack_cooldown == 0:
+	if not is_instance_valid(target):
+		return
+	if current_attack_cooldown == 0:
 		position = position.move_toward(target.position, movement_speed * delta)
 
 func _on_destroyed() -> void:

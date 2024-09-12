@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0otwo13tech4"]
+
+[ext_resource type="Script" path="res://scripts/explosive.gd" id="1_qll6u"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://materials/blue.tres" id="2_2vda1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7pdne"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_ipyh8"]
+material = ExtResource("2_2vda1")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ure2f"]
+radius = 2.0
+
+[node name="Explosive" type="Area3D"]
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("1_qll6u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_7pdne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_ipyh8")
+skeleton = NodePath("")
+
+[node name="ExplosionArea" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 12
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
+shape = SubResource("SphereShape3D_ure2f")
+
+[connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]

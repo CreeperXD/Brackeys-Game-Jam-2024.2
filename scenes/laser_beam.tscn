@@ -1,30 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://rbn50pjh8bmk"]
 
 [ext_resource type="Script" path="res://scripts/laser_beam.gd" id="1_3bag4"]
+[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://materials/red.tres" id="2_tqttw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vrwaf"]
 height = 1.0
 radius = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lh3p2"]
-albedo_color = Color(1, 0, 1, 1)
-
 [sub_resource type="CylinderMesh" id="CylinderMesh_a0dea"]
-material = SubResource("StandardMaterial3D_lh3p2")
+material = ExtResource("2_tqttw")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 1.0
 radial_segments = 16
 
 [node name="LaserBeam" type="Area3D"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 0
 collision_mask = 12
 script = ExtResource("1_3bag4")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_vrwaf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_a0dea")
 skeleton = NodePath("")

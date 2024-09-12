@@ -1,25 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://yfsjrvb0jj6j"]
+[gd_scene load_steps=8 format=3 uid="uid://cc367pnfsv2te"]
 
-[ext_resource type="Script" path="res://scripts/laser_beam_turret.gd" id="1_8g431"]
-[ext_resource type="PackedScene" uid="uid://rbn50pjh8bmk" path="res://scenes/laser_beam.tscn" id="2_lkucm"]
-[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://materials/magenta.tres" id="3_6q3qu"]
-[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://materials/red.tres" id="4_pqlws"]
+[ext_resource type="Script" path="res://scripts/explosive_turret.gd" id="1_qb1ij"]
+[ext_resource type="PackedScene" uid="uid://d0otwo13tech4" path="res://scenes/explosive.tscn" id="2_r0wnk"]
+[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://materials/magenta.tres" id="3_dlx4w"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://materials/blue.tres" id="4_s8m35"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
-material = ExtResource("3_6q3qu")
+material = ExtResource("3_dlx4w")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvg6w"]
-material = ExtResource("4_pqlws")
+material = ExtResource("4_s8m35")
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="LaserBeamTurret" type="CharacterBody3D" groups=["server_component"]]
+[node name="ExplosiveTurret" type="CharacterBody3D" groups=["server_component"]]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_8g431")
-laser_beam_scene = ExtResource("2_lkucm")
-attack_strength = 100.0
+script = ExtResource("1_qb1ij")
+explosive_scene = ExtResource("2_r0wnk")
+attack_strength = 50.0
+attack_range = 100.0
 initial_attack_cooldown = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

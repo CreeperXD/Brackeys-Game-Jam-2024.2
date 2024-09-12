@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_integrity_changed(new_integrity: float) -> void:
-	print(str(self) + str(new_integrity))
+	#print(str(self) + str(new_integrity))
 	if new_integrity == 0:
 		destroyed.emit()
 

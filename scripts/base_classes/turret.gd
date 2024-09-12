@@ -12,14 +12,13 @@ var current_attack_cooldown: float = 0:
 var target: Cyberattack
 
 func _process(delta: float) -> void:
-	if not target:
-		target = search_closest_target("cyberattack")
+	if is_instance_valid(target) and position.distance_to(target.position) <= attack_range:
+		rotate_towards_target(target)
+		if current_attack_cooldown == 0:
+			attack_queued.emit()
+			current_attack_cooldown = initial_attack_cooldown
 	else:
-		if position.distance_to(target.position) <= attack_range:
-			rotate_towards_target(target)
-			if current_attack_cooldown == 0:
-				attack_queued.emit()
-				current_attack_cooldown = initial_attack_cooldown
+		target = search_closest_target("cyberattack")
 	
 	current_attack_cooldown -= delta
 

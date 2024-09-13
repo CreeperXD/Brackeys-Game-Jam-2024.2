@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/explosive_turret.gd" id="1_qb1ij"]
 [ext_resource type="PackedScene" uid="uid://d0otwo13tech4" path="res://scenes/explosive.tscn" id="2_r0wnk"]
-[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://materials/magenta.tres" id="3_dlx4w"]
-[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://materials/blue.tres" id="4_s8m35"]
+[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://assets/materials/magenta.tres" id="3_dlx4w"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="4_s8m35"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 

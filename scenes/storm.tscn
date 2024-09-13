@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce2jgh7h5al1l"]
 
 [ext_resource type="Script" path="res://scripts/storm.gd" id="1_1y44m"]
-[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://materials/red.tres" id="2_wkjem"]
+[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://assets/materials/red.tres" id="2_wkjem"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 

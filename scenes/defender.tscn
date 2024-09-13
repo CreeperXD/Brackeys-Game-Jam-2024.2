@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://nwhdp6drjgjq"]
+[gd_scene load_steps=5 format=3 uid="uid://nwhdp6drjgjq"]
 
 [ext_resource type="Script" path="res://scripts/defender.gd" id="1_s7vfd"]
-[ext_resource type="Texture2D" uid="uid://bxos44y4fbqet" path="res://icon.svg" id="2_af7gc"]
 [ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/laser_beam_turret.tscn" id="2_keauy"]
 [ext_resource type="PackedScene" uid="uid://cc367pnfsv2te" path="res://scenes/server_components/explosive_turret.tscn" id="3_ua3d3"]
 
@@ -17,17 +16,6 @@ laser_beam_turret_scene = ExtResource("2_keauy")
 explosive_turret_scene = ExtResource("3_ua3d3")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-
-[node name="Crosshair" type="Node3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="Sprite3D" type="Sprite3D" parent="Camera3D/Crosshair"]
-transform = Transform3D(0.1, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
-texture = ExtResource("2_af7gc")
-
-[node name="Sprite3D2" type="Sprite3D" parent="Camera3D/Crosshair"]
-transform = Transform3D(0.01, 0, 0, 0, 0.1, 0, 0, 0, 0.01, 0, 0, 0)
-texture = ExtResource("2_af7gc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_d5110")

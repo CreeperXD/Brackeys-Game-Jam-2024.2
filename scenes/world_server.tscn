@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwm6u8v4gg8ur"]
+[gd_scene load_steps=11 format=3 uid="uid://cwm6u8v4gg8ur"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_qb57a"]
 [ext_resource type="PackedScene" uid="uid://48spr7ut5pxt" path="res://scenes/brute_force.tscn" id="2_4llxf"]
@@ -9,16 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://boygbm3lp8ymk" path="res://scenes/server_components/battery.tscn" id="7_cps5v"]
 [ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/laser_beam_turret.tscn" id="8_mddna"]
 [ext_resource type="PackedScene" uid="uid://cc367pnfsv2te" path="res://scenes/server_components/explosive_turret.tscn" id="9_0i57a"]
+[ext_resource type="PackedScene" uid="uid://cypfdlkddhmmd" path="res://scenes/game_menu.tscn" id="10_t3gnx"]
 
 [node name="WorldServer" type="Node"]
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_qb57a")
-enemy_scene = ExtResource("2_4llxf")
 
 [node name="Timer" type="Timer" parent="GameManager"]
-wait_time = 0.01
-autostart = true
+wait_time = 10.0
 
 [node name="Ground" parent="." instance=ExtResource("3_3j7s0")]
 
@@ -58,5 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7672, 0.5, -12.8979)
 
 [node name="ExplosiveTurret" parent="." instance=ExtResource("9_0i57a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
+
+[node name="GameMenu" parent="." instance=ExtResource("10_t3gnx")]
 
 [connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]

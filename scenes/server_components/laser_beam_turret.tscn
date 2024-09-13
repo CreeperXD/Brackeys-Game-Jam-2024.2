@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/laser_beam_turret.gd" id="1_8g431"]
 [ext_resource type="PackedScene" uid="uid://rbn50pjh8bmk" path="res://scenes/laser_beam.tscn" id="2_lkucm"]
-[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://materials/magenta.tres" id="3_6q3qu"]
-[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://materials/red.tres" id="4_pqlws"]
+[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://assets/materials/magenta.tres" id="3_6q3qu"]
+[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://assets/materials/red.tres" id="4_pqlws"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 

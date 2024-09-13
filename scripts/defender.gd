@@ -15,29 +15,12 @@ var raycast_result: Dictionary
 var selected_turret: Turrets = 0
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	pass
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("exit"):
-		get_tree().quit()
-	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotation_input = -event.relative.x
 		tilt_input = -event.relative.y
-	
-	if Input.is_action_just_pressed("left_mouse_button_click"):
-		if raycast_result:
-			var selected_turret_instance: Turret
-			match selected_turret:
-				Turrets.NOTHING:
-					pass
-				Turrets.LASER_BEAM:
-					selected_turret_instance = laser_beam_turret_scene.instantiate()
-				Turrets.EXPLOSIVE:
-					selected_turret_instance = explosive_turret_scene.instantiate()
-			if selected_turret_instance:
-				selected_turret_instance.position = raycast_result.position + Vector3.UP * 0.5
-				get_parent().add_child(selected_turret_instance)
 	
 	if Input.is_action_just_pressed("0"):
 		selected_turret = Turrets.NOTHING
@@ -45,6 +28,19 @@ func _input(event: InputEvent) -> void:
 		selected_turret = Turrets.LASER_BEAM
 	if Input.is_action_just_pressed("2"):
 		selected_turret = Turrets.EXPLOSIVE
+	
+	if Input.is_action_just_pressed("left_mouse_button_click") and raycast_result:
+		var selected_turret_instance: Turret
+		match selected_turret:
+			Turrets.NOTHING:
+				pass
+			Turrets.LASER_BEAM:
+				selected_turret_instance = laser_beam_turret_scene.instantiate()
+			Turrets.EXPLOSIVE:
+				selected_turret_instance = explosive_turret_scene.instantiate()
+		if selected_turret_instance:
+			selected_turret_instance.position = raycast_result.position + Vector3.UP * 0.5
+			get_parent().add_child(selected_turret_instance)
 
 func _physics_process(delta: float) -> void:
 	rotate_player(delta)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://rbn50pjh8bmk"]
 
 [ext_resource type="Script" path="res://scripts/laser_beam.gd" id="1_3bag4"]
-[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://materials/red.tres" id="2_tqttw"]
+[ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://assets/materials/red.tres" id="2_tqttw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vrwaf"]
 height = 1.0

@@ -27,5 +27,5 @@ func initialise(initial_position: Vector3, target: CyberObject, projectile_damag
 
 func explode() -> void:
 	$ExplosionArea.monitoring = true
-	await get_tree().create_timer(0.01).timeout
+	await get_tree().create_timer(0.01, true).timeout
 	queue_free()

@@ -17,10 +17,10 @@ func _process(delta: float) -> void:
 		if current_attack_cooldown == 0:
 			attack_queued.emit()
 			current_attack_cooldown = initial_attack_cooldown
+		current_attack_cooldown -= delta
 	else:
 		target = search_closest_target("cyberattack")
-	
-	current_attack_cooldown -= delta
+		current_attack_cooldown = initial_attack_cooldown
 
 func _on_destroyed() -> void:
 	print("Turret destroyed!")

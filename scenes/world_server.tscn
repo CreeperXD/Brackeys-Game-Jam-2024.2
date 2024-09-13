@@ -1,23 +1,30 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwm6u8v4gg8ur"]
+[gd_scene load_steps=10 format=3 uid="uid://cwm6u8v4gg8ur"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_qb57a"]
-[ext_resource type="PackedScene" uid="uid://48spr7ut5pxt" path="res://scenes/brute_force.tscn" id="2_4llxf"]
+[ext_resource type="PackedScene" uid="uid://48spr7ut5pxt" path="res://scenes/brute_force.tscn" id="2_up6e6"]
 [ext_resource type="PackedScene" uid="uid://dnyqfl4b0ujci" path="res://scenes/ground.tscn" id="3_3j7s0"]
+[ext_resource type="PackedScene" uid="uid://ce2jgh7h5al1l" path="res://scenes/storm.tscn" id="3_gk7m6"]
 [ext_resource type="PackedScene" uid="uid://nwhdp6drjgjq" path="res://scenes/defender.tscn" id="4_m8dsn"]
 [ext_resource type="PackedScene" uid="uid://di8qvchbobw4l" path="res://scenes/server_components/cpu.tscn" id="5_yllt7"]
-[ext_resource type="PackedScene" uid="uid://ce2jgh7h5al1l" path="res://scenes/storm.tscn" id="6_t07l7"]
 [ext_resource type="PackedScene" uid="uid://boygbm3lp8ymk" path="res://scenes/server_components/battery.tscn" id="7_cps5v"]
-[ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/laser_beam_turret.tscn" id="8_mddna"]
-[ext_resource type="PackedScene" uid="uid://cc367pnfsv2te" path="res://scenes/server_components/explosive_turret.tscn" id="9_0i57a"]
 [ext_resource type="PackedScene" uid="uid://cypfdlkddhmmd" path="res://scenes/game_menu.tscn" id="10_t3gnx"]
 
+[sub_resource type="Curve3D" id="Curve3D_74lh1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 100, 0.5, 100, 0, 0, 0, 0, 0, 0, -100, 0.5, 100, 0, 0, 0, 0, 0, 0, -100, 0.5, -100, 0, 0, 0, 0, 0, 0, 100, 0.5, -100, 0, 0, 0, 0, 0, 0, 100, 0.5, 100),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="WorldServer" type="Node"]
-
-[node name="GameManager" type="Node" parent="."]
 script = ExtResource("1_qb57a")
+brute_force_scene = ExtResource("2_up6e6")
+storm_scene = ExtResource("3_gk7m6")
 
-[node name="Timer" type="Timer" parent="GameManager"]
-wait_time = 10.0
+[node name="NextWaveTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="Ground" parent="." instance=ExtResource("3_3j7s0")]
 
@@ -30,34 +37,20 @@ transform = Transform3D(1, 0, 0, 0, -0.371368, 0.928486, 0, -0.928486, -0.371368
 [node name="CPU" parent="." instance=ExtResource("5_yllt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.5, 1)
 
-[node name="STORM" parent="." instance=ExtResource("6_t07l7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0.5, 0)
-movement_speed = 5.0
-
 [node name="Battery" parent="." instance=ExtResource("7_cps5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37851, 0.5, -1.65774)
 
 [node name="Battery2" parent="." instance=ExtResource("7_cps5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.49271, 0.5, 1.03676)
 
-[node name="LaserBeamTurret" parent="." instance=ExtResource("8_mddna")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-
-[node name="BruteForce" parent="." instance=ExtResource("2_4llxf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6234, 0.5, -6.58721)
-
-[node name="BruteForce2" parent="." instance=ExtResource("2_4llxf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.8753, 0.5, 7.71707)
-
-[node name="BruteForce3" parent="." instance=ExtResource("2_4llxf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5782, 0.5, 11.6234)
-
-[node name="BruteForce4" parent="." instance=ExtResource("2_4llxf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7672, 0.5, -12.8979)
-
-[node name="ExplosiveTurret" parent="." instance=ExtResource("9_0i57a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 2)
-
 [node name="GameMenu" parent="." instance=ExtResource("10_t3gnx")]
 
-[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
+[node name="SpawnPath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_74lh1")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 100, 0.5, 100)
+
+[node name="Cyberattacks" type="Node" parent="."]
+
+[connection signal="timeout" from="NextWaveTimer" to="." method="_on_next_wave_timer_timeout"]

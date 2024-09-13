@@ -67,9 +67,6 @@ text = "2: explosive turret
 "
 autowrap_mode = 3
 
-[node name="NextWaveTimer" type="Timer" parent="."]
-wait_time = 10.0
-
 [node name="Crosshair" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8

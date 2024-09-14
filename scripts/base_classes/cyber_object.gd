@@ -23,7 +23,7 @@ func _on_integrity_changed(new_integrity: float) -> void:
 func search_closest_target(group: StringName) -> CyberObject:
 	var potential_targets: Array[Node] = get_tree().get_nodes_in_group(group)
 	var distance_to_potential_targets: Array[float]
-	for potential_target in potential_targets:
+	for potential_target: CyberObject in potential_targets:
 		distance_to_potential_targets.append(position.distance_to(potential_target.position))
 	if potential_targets.is_empty():
 		return null

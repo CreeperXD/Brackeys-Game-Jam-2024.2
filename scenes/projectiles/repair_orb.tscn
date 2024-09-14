@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://e8ubj14ig6j7"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/repair_orb.gd" id="1_0fcwa"]
+[ext_resource type="Material" uid="uid://t7nonaff8af6" path="res://assets/materials/green.tres" id="2_5v2fk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7pdne"]
+radius = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_ipyh8"]
+material = ExtResource("2_5v2fk")
+radius = 0.25
+height = 0.5
+
+[node name="RepairOrb" type="Area3D"]
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("1_0fcwa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("SphereShape3D_7pdne")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_ipyh8")
+skeleton = NodePath("")

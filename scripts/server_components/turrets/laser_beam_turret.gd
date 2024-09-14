@@ -1,4 +1,4 @@
-extends Turret
+class_name LaserBeamTurret extends Turret
 
 @export var laser_beam_scene: PackedScene
 
@@ -8,8 +8,6 @@ func _ready() -> void:
 
 func _on_attack_queued() -> void:
 	var laser_beam: LaserBeam = laser_beam_scene.instantiate()
-	#print(target)
-	#print(laser_beam.position)
 	laser_beam.initialise($FirePoint.global_position, target, rotation, attack_strength, 100, 1)
 	get_parent().add_child(laser_beam)
 

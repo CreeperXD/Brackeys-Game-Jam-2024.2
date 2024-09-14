@@ -1,4 +1,4 @@
-extends Turret
+class_name ExplosiveTurret extends Turret
 
 @export var explosive_scene: PackedScene
 
@@ -8,9 +8,7 @@ func _ready() -> void:
 
 func _on_attack_queued() -> void:
 	var explosive: Explosive = explosive_scene.instantiate()
-	#print(target)
-	#print(laser_beam.position)
-	explosive.initialise($FirePoint.global_position, target, attack_strength, 25, 5)
+	explosive.initialise($FirePoint.global_position, target, rotation, attack_strength, 25, 5)
 	get_parent().add_child(explosive)
 
 func _on_destroyed() -> void:

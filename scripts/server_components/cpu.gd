@@ -1,4 +1,4 @@
-extends ServerComponent
+class_name CPU extends ServerComponent
 
 func _process(delta: float) -> void:
 	pass

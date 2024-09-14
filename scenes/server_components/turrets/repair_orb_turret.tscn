@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://i5wjcph3r8uc"]
 
-[ext_resource type="Script" path="res://scripts/server_components/turrets/explosive_turret.gd" id="1_q8ayl"]
-[ext_resource type="PackedScene" uid="uid://d0otwo13tech4" path="res://scenes/projectiles/explosive.tscn" id="2_ddcye"]
+[ext_resource type="Script" path="res://scripts/server_components/turrets/repair_orb_turret.gd" id="1_35vii"]
+[ext_resource type="PackedScene" uid="uid://e8ubj14ig6j7" path="res://scenes/projectiles/repair_orb.tscn" id="2_exxhc"]
+[ext_resource type="Material" uid="uid://t7nonaff8af6" path="res://assets/materials/green.tres" id="3_4015p"]
 [ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://assets/materials/magenta.tres" id="3_tqmav"]
-[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="4_ld6p4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
@@ -11,17 +11,14 @@
 material = ExtResource("3_tqmav")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvg6w"]
-material = ExtResource("4_ld6p4")
+material = ExtResource("3_4015p")
 size = Vector3(0.5, 0.5, 0.5)
 
-[node name="ExplosiveTurret" type="CharacterBody3D" groups=["server_component"]]
+[node name="RepairOrbTurret" type="CharacterBody3D" groups=["server_component"]]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("1_q8ayl")
-explosive_scene = ExtResource("2_ddcye")
-attack_strength = 50.0
-attack_range = 100.0
-initial_attack_cooldown = 0.5
+script = ExtResource("1_35vii")
+repair_orb_scene = ExtResource("2_exxhc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_saqcw")

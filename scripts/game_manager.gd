@@ -1,6 +1,7 @@
 extends Node
 
 @export	var brute_force_scene: PackedScene
+@export var grenadier_scene: PackedScene
 @export var storm_scene: PackedScene
 
 var waves: Dictionary = {
@@ -30,12 +31,26 @@ var waves: Dictionary = {
 			"amount": 50,
 			"spawn_start_time": 10.0,
 			"spawn_duration": 5.0
+		}
+	},
+	3: {
+		1: {
+			"cyberattack": Grenadier,
+			"amount": 25,
+			"spawn_start_time": 0,
+			"spawn_duration": 10.0
+		},
+		2: {
+			"cyberattack": Grenadier,
+			"amount": 25,
+			"spawn_start_time": 0.0,
+			"spawn_duration": 5.0
 		},
 		3: {
-			"cyberattack": STORM,
-			"amount": 1,
-			"spawn_start_time": 15.0,
-			"spawn_duration": 0.0
+			"cyberattack": BruteForce,
+			"amount": 50,
+			"spawn_start_time": 5.0,
+			"spawn_duration": 10.0
 		}
 	}
 }
@@ -70,6 +85,8 @@ func _process(delta: float) -> void:
 	$GameMenu.update_wave_label($NextWaveTimer.time_left, current_wave)
 
 func _on_next_wave_timer_timeout() -> void:
+	$Defender.can_place_turrets = false
+	$GameMenu.hide_turret_spawning_info()
 	finished_spawning = false
 	wave_finished = false
 	current_wave += 1
@@ -89,6 +106,8 @@ func prepare_next_wave() -> void:
 	if is_final_wave:
 		$GameMenu.show_game_over_menu("won")
 	else:
+		$Defender.can_place_turrets = true
+		$GameMenu.show_turret_spawning_info()
 		for battery: Battery in get_tree().get_nodes_in_group("battery"):
 			$Defender.power += battery.power_per_wave
 		$NextWaveTimer.start()
@@ -106,6 +125,8 @@ func spawn_subwave(subwave: Dictionary) -> void:
 			cyberattack_scene = brute_force_scene
 		STORM:
 			cyberattack_scene = storm_scene
+		Grenadier:
+			cyberattack_scene = grenadier_scene
 	
 	await get_tree().create_timer(subwave.spawn_start_time, false).timeout
 	for i in range(subwave.amount):

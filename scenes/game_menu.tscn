@@ -6,7 +6,15 @@
 [node name="GameMenu" type="CanvasLayer"]
 script = ExtResource("1_y0o8n")
 
-[node name="DeselectInfo" type="Control" parent="."]
+[node name="TurretSpawningInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Deselect" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 100.0
@@ -16,7 +24,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="DeselectInfo"]
+[node name="Label" type="Label" parent="TurretSpawningInfo/Deselect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +34,7 @@ grow_vertical = 2
 text = "0: deselect"
 autowrap_mode = 3
 
-[node name="LaserBeamTurretInfo" type="Control" parent="."]
+[node name="LaserBeamTurret" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 300.0
@@ -36,7 +44,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="LaserBeamTurretInfo"]
+[node name="Label" type="Label" parent="TurretSpawningInfo/LaserBeamTurret"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +54,7 @@ grow_vertical = 2
 text = "1: laser beam turret"
 autowrap_mode = 3
 
-[node name="ExplosiveTurretInfo" type="Control" parent="."]
+[node name="ExplosiveTurret" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 500.0
@@ -56,7 +64,7 @@ offset_bottom = 200.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="ExplosiveTurretInfo"]
+[node name="Label" type="Label" parent="TurretSpawningInfo/ExplosiveTurret"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -65,6 +73,50 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "2: explosive turret
 "
+autowrap_mode = 3
+
+[node name="RepairOrbTurret" type="Control" parent="TurretSpawningInfo"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 664.0
+offset_top = 100.0
+offset_right = 764.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="TurretSpawningInfo/RepairOrbTurret"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3: repair orb turret"
+autowrap_mode = 3
+
+[node name="PauseInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 664.0
+offset_top = 100.0
+offset_right = 764.0
+offset_bottom = 200.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="PauseInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 359.0
+offset_top = -85.0
+offset_right = 359.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Esc or P: Pause"
 autowrap_mode = 3
 
 [node name="Crosshair" type="Control" parent="."]

@@ -2,7 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	hide_pause_menu()
-	hide_game_oveer_menu()
+	hide_game_over_menu()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -17,6 +17,12 @@ func _on_main_menu_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
+
+func show_turret_spawning_info() -> void:
+	$TurretSpawningInfo.show()
+
+func hide_turret_spawning_info() -> void:
+	$TurretSpawningInfo.hide()
 
 func show_pause_menu() -> void:
 	$PauseMenu.show()
@@ -48,7 +54,7 @@ func show_game_over_menu(type: String) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	get_tree().paused = true
 
-func hide_game_oveer_menu() -> void:
+func hide_game_over_menu() -> void:
 	$GameOverMenu.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false

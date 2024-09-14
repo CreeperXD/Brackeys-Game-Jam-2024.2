@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtxm4ntuiffdd"]
+
+[ext_resource type="Material" uid="uid://cjqst8i5702c5" path="res://assets/materials/ground.tres" id="1_tgfy2"]
+[ext_resource type="Material" uid="uid://c1wqtqkbqwycv" path="res://assets/materials/wall.tres" id="2_4gm57"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2bydt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1p1rw"]
+material = ExtResource("1_tgfy2")
+size = Vector2(200, 200)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jksti"]
+material = ExtResource("2_4gm57")
+size = Vector2(200, 200)
+
+[node name="ServerBoundaries" type="Node"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("WorldBoundaryShape3D_2bydt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_1p1rw")
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -100, 0, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("WorldBoundaryShape3D_2bydt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("PlaneMesh_jksti")
+
+[node name="Wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 100, 0, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
+shape = SubResource("WorldBoundaryShape3D_2bydt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall2"]
+mesh = SubResource("PlaneMesh_jksti")
+
+[node name="Wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 4.37114e-06, 0, -100)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
+shape = SubResource("WorldBoundaryShape3D_2bydt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall3"]
+mesh = SubResource("PlaneMesh_jksti")
+
+[node name="Wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -4.37114e-06, 0, 100)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
+shape = SubResource("WorldBoundaryShape3D_2bydt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall4"]
+mesh = SubResource("PlaneMesh_jksti")
+
+[node name="Wall5" type="StaticBody3D" parent="."]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, 8.74228e-08, -1, -4.37114e-08, 1, 8.74228e-08, 1.91069e-15, 0, 100, 0)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall5"]
+shape = SubResource("WorldBoundaryShape3D_2bydt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall5"]
+mesh = SubResource("PlaneMesh_jksti")

@@ -19,6 +19,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_35vii")
 repair_orb_scene = ExtResource("2_exxhc")
+cost = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_saqcw")

@@ -19,6 +19,7 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_8g431")
 laser_beam_scene = ExtResource("2_lkucm")
+cost = 5
 attack_strength = 100.0
 initial_attack_cooldown = 0.5
 

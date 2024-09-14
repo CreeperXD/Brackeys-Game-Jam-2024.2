@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dqvtsbut7dtf6"]
+
+[ext_resource type="Script" path="res://scripts/cyberattacks/grenadier.gd" id="1_oa2l3"]
+[ext_resource type="PackedScene" uid="uid://d0otwo13tech4" path="res://scenes/projectiles/explosive.tscn" id="2_7ujip"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="2_bi3fc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glia6"]
+albedo_color = Color(0.392157, 0, 0.392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
+material = SubResource("StandardMaterial3D_glia6")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2o2a2"]
+material = ExtResource("2_bi3fc")
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Grenadier" type="CharacterBody3D" groups=["cyberattack"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_oa2l3")
+explosive_scene = ExtResource("2_7ujip")
+max_integrity = 25.0
+current_integrity = 25.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_saqcw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3q0d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+mesh = SubResource("BoxMesh_2o2a2")
+
+[node name="FirePoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+
+[connection signal="attack_queued" from="." to="." method="_on_attack_queued"]
+[connection signal="destroyed" from="." to="." method="_on_destroyed"]

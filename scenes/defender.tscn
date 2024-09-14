@@ -1,19 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://nwhdp6drjgjq"]
+[gd_scene load_steps=6 format=3 uid="uid://nwhdp6drjgjq"]
 
 [ext_resource type="Script" path="res://scripts/defender.gd" id="1_s7vfd"]
 [ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/turrets/laser_beam_turret.tscn" id="2_keauy"]
 [ext_resource type="PackedScene" uid="uid://cc367pnfsv2te" path="res://scenes/server_components/turrets/explosive_turret.tscn" id="3_ua3d3"]
+[ext_resource type="PackedScene" uid="uid://i5wjcph3r8uc" path="res://scenes/server_components/turrets/repair_orb_turret.tscn" id="4_3qday"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d5110"]
 
 [node name="Defender" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 21
 script = ExtResource("1_s7vfd")
 mouse_sensitivity = 0.5
 movement_speed = 50.0
 laser_beam_turret_scene = ExtResource("2_keauy")
 explosive_turret_scene = ExtResource("3_ua3d3")
+repair_orb_turret_scene = ExtResource("4_3qday")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 

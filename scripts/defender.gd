@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 signal power_changed(new_power: int)
 
-enum Turrets {NOTHING, LASER_BEAM, EXPLOSIVE}
+enum Turrets {NOTHING, LASER_BEAM, EXPLOSIVE, REPAIR_ORB}
 
 @export_range(0.25, 1) var mouse_sensitivity: float = 1
 @export var movement_speed: float = 5
@@ -13,12 +13,18 @@ enum Turrets {NOTHING, LASER_BEAM, EXPLOSIVE}
 @export var ray_length: float = 1000
 @export var laser_beam_turret_scene: PackedScene
 @export var explosive_turret_scene: PackedScene
+@export var repair_orb_turret_scene: PackedScene
 
 var mouse_rotation: Vector3
 var rotation_input: float
 var tilt_input: float
 var raycast_result: Dictionary
-var selected_turret: Turrets = 0
+var selected_turret: Turrets = Turrets.NOTHING
+var can_place_turrets: bool = true:
+	set(value):
+		can_place_turrets = value
+		if can_place_turrets:
+			selected_turret = Turrets.NOTHING
 
 func _ready() -> void:
 	pass
@@ -34,8 +40,10 @@ func _input(event: InputEvent) -> void:
 		selected_turret = Turrets.LASER_BEAM
 	if Input.is_action_just_pressed("2"):
 		selected_turret = Turrets.EXPLOSIVE
+	if Input.is_action_just_pressed("3"):
+		selected_turret = Turrets.REPAIR_ORB
 	
-	if Input.is_action_just_pressed("left_mouse_button_click") and raycast_result:
+	if Input.is_action_just_pressed("left_mouse_button_click") and raycast_result and can_place_turrets:
 		var selected_turret_instance: Turret
 		match selected_turret:
 			Turrets.NOTHING:
@@ -44,6 +52,8 @@ func _input(event: InputEvent) -> void:
 				selected_turret_instance = laser_beam_turret_scene.instantiate()
 			Turrets.EXPLOSIVE:
 				selected_turret_instance = explosive_turret_scene.instantiate()
+			Turrets.REPAIR_ORB:
+				selected_turret_instance = repair_orb_turret_scene.instantiate()
 		if selected_turret_instance and power >= selected_turret_instance.cost:
 			power -= selected_turret_instance.cost
 			selected_turret_instance.position = raycast_result.position + Vector3.UP * 0.5

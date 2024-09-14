@@ -1,9 +1,15 @@
 extends CharacterBody3D
 
+signal power_changed(new_power: int)
+
 enum Turrets {NOTHING, LASER_BEAM, EXPLOSIVE}
 
 @export_range(0.25, 1) var mouse_sensitivity: float = 1
 @export var movement_speed: float = 5
+@export var power: int = 10:
+	set(value):
+		power = value
+		power_changed.emit(power)
 @export var ray_length: float = 1000
 @export var laser_beam_turret_scene: PackedScene
 @export var explosive_turret_scene: PackedScene
@@ -38,7 +44,8 @@ func _input(event: InputEvent) -> void:
 				selected_turret_instance = laser_beam_turret_scene.instantiate()
 			Turrets.EXPLOSIVE:
 				selected_turret_instance = explosive_turret_scene.instantiate()
-		if selected_turret_instance:
+		if selected_turret_instance and power >= selected_turret_instance.cost:
+			power -= selected_turret_instance.cost
 			selected_turret_instance.position = raycast_result.position + Vector3.UP * 0.5
 			get_parent().add_child(selected_turret_instance)
 

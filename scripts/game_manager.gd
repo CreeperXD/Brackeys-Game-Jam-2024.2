@@ -1,7 +1,5 @@
 extends Node
 
-signal wave_finished
-
 @export	var brute_force_scene: PackedScene
 @export var storm_scene: PackedScene
 
@@ -41,40 +39,59 @@ var waves: Dictionary = {
 		}
 	}
 }
-var current_wave: int = 0
+var current_wave: int = 0:
+	set(value):
+		current_wave = value
+		if current_wave == waves.size():
+			is_final_wave = true
 var is_final_wave: bool = false
-var cyberattacks_to_spawn: int = 0
+var cyberattacks_to_spawn: int = 0:
+	set(value):
+		cyberattacks_to_spawn = value
+		if not finished_spawning and cyberattacks_to_spawn == 0:
+			finished_spawning = true
 var finished_spawning: bool = true
-var remaining_cyberattacks: int = 0
+var remaining_cyberattacks: int = 0:
+	set(value):
+		remaining_cyberattacks = value
+		if finished_spawning and remaining_cyberattacks == 0:
+			wave_finished = true
+var wave_finished: bool = true:
+	set(value):
+		if value != wave_finished:
+			wave_finished = value
+			if wave_finished:
+				prepare_next_wave()
 
 func _ready() -> void:
-	pass
+	prepare_next_wave()
 
 func _process(delta: float) -> void:
-	pass
+	$GameMenu.update_wave_label($NextWaveTimer.time_left, current_wave)
 
 func _on_next_wave_timer_timeout() -> void:
 	finished_spawning = false
+	wave_finished = false
 	current_wave += 1
-	if current_wave == waves.size():
-		is_final_wave = true
 	spawn_wave(current_wave)
-
-func _on_wave_finished() -> void:
-	if is_final_wave:
-		print("congrats")
-	else:
-		print("next wave")
-		$NextWaveTimer.start()
-		pass
 
 func _on_cyberattack_destroyed() -> void:
 	await get_tree().create_timer(0.01, true).timeout
 	remaining_cyberattacks = $Cyberattacks.get_child_count()
-	print(remaining_cyberattacks)
-	#print(Time.get_ticks_msec())
-	if finished_spawning and remaining_cyberattacks == 0:
-		wave_finished.emit()
+
+func _on_defender_power_changed(new_power: int) -> void:
+	$GameMenu.update_power_label(new_power)
+
+func _on_cpu_destroyed() -> void:
+	$GameMenu.show_game_over_menu("lost")
+
+func prepare_next_wave() -> void:
+	if is_final_wave:
+		$GameMenu.show_game_over_menu("won")
+	else:
+		for battery: Battery in get_tree().get_nodes_in_group("battery"):
+			$Defender.power += battery.power_per_wave
+		$NextWaveTimer.start()
 
 func spawn_wave(wave: int) -> void:
 	var wave_content: Dictionary = waves[wave]
@@ -104,7 +121,4 @@ func spawn_cyberattack(cyberattack_scene: PackedScene, position: Vector3) -> voi
 	cyberattack.position = position
 	cyberattack.destroyed.connect(_on_cyberattack_destroyed.bind())
 	$Cyberattacks.add_child(cyberattack)
-	
 	cyberattacks_to_spawn -= 1
-	if not finished_spawning and cyberattacks_to_spawn == 0:
-		finished_spawning = true

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://nwhdp6drjgjq"]
 
 [ext_resource type="Script" path="res://scripts/defender.gd" id="1_s7vfd"]
-[ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/laser_beam_turret.tscn" id="2_keauy"]
-[ext_resource type="PackedScene" uid="uid://cc367pnfsv2te" path="res://scenes/server_components/explosive_turret.tscn" id="3_ua3d3"]
+[ext_resource type="PackedScene" uid="uid://yfsjrvb0jj6j" path="res://scenes/server_components/turrets/laser_beam_turret.tscn" id="2_keauy"]
+[ext_resource type="PackedScene" uid="uid://cc367pnfsv2te" path="res://scenes/server_components/turrets/explosive_turret.tscn" id="3_ua3d3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_d5110"]
 

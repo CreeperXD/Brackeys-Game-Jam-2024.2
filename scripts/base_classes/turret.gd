@@ -2,6 +2,7 @@ class_name Turret extends ServerComponent
 
 signal attack_queued
 
+@export var cost: int = 4
 @export var attack_strength: float = 25
 @export var attack_range: float = 25
 @export var initial_attack_cooldown: float = 1

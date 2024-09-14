@@ -2,10 +2,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	hide_pause_menu()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	hide_game_oveer_menu()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
@@ -17,6 +14,10 @@ func _on_resume_button_pressed() -> void:
 func _on_main_menu_button_pressed() -> void:
 	pass # Replace with function body.
 
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
 func show_pause_menu() -> void:
 	$PauseMenu.show()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -24,5 +25,30 @@ func show_pause_menu() -> void:
 
 func hide_pause_menu() -> void:
 	$PauseMenu.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	get_tree().paused = false
+
+func update_wave_label(seconds: float, wave: int) -> void:
+	if seconds > 0:
+		$WaveLabel.text = "Next wave in " + str(ceil(seconds)) + " seconds"
+	else:
+		$WaveLabel.text = "Wave " + str(wave)
+
+func update_power_label(power: int) -> void:
+	$Power/Label.text = str(power)
+
+func show_game_over_menu(type: String) -> void:
+	$GameOverMenu.show()
+	if type == "won":
+		$GameOverMenu/ColorRect.color = Color.GREEN
+		$GameOverMenu/Label.text = "You successfully repelled S.T.O.R.M. and its forces"
+	else:
+		$GameOverMenu/ColorRect.color = Color.RED
+		$GameOverMenu/Label.text = "S.T.O.R.M.'s forces destroyed the CPU"
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().paused = true
+
+func hide_game_oveer_menu() -> void:
+	$GameOverMenu.hide()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	get_tree().paused = false

@@ -43,7 +43,7 @@ func update_power_label(power: int) -> void:
 func show_game_over_menu(type: String) -> void:
 	$GameOverMenu.show()
 	if type == "won":
-		$GameOverMenu/ColorRect.color = Color(50, 200, 50, 255)
+		$GameOverMenu/ColorRect.color = Color.GREEN
 		$GameOverMenu/Label.text = "You successfully repelled S.T.O.R.M. and its forces"
 	else:
 		$GameOverMenu/ColorRect.color = Color.RED

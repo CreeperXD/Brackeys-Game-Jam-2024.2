@@ -78,6 +78,50 @@ var waves: Dictionary = {
 			"spawn_start_time": 8.0,
 			"spawn_duration": 10.0
 		}
+	},
+	5: {
+		1: {
+			"cyberattack": STORM,
+			"amount": 1,
+			"spawn_start_time": 0.0,
+			"spawn_duration": 1.0
+		},
+		2: {
+			"cyberattack": BruteForce,
+			"amount": 25,
+			"spawn_start_time": 5.0,
+			"spawn_duration": 15.0
+		},
+		3: {
+			"cyberattack": Grenadier,
+			"amount": 25,
+			"spawn_start_time": 5.0,
+			"spawn_duration": 15.0
+		},
+		4: {
+			"cyberattack": BruteForce,
+			"amount": 25,
+			"spawn_start_time": 20.0,
+			"spawn_duration": 30.0
+		},
+		5: {
+			"cyberattack": Grenadier,
+			"amount": 25,
+			"spawn_start_time": 20.0,
+			"spawn_duration": 30.0
+		},
+		6: {
+			"cyberattack": BruteForce,
+			"amount": 25,
+			"spawn_start_time": 35.0,
+			"spawn_duration": 45.0
+		},
+		7: {
+			"cyberattack": Grenadier,
+			"amount": 25,
+			"spawn_start_time": 35.0,
+			"spawn_duration": 45.0
+		}
 	}
 }
 var current_wave: int = 0:
@@ -119,7 +163,7 @@ func _on_next_wave_timer_timeout() -> void:
 	spawn_wave(current_wave)
 
 func _on_cyberattack_destroyed() -> void:
-	await get_tree().create_timer(0.01, true).timeout
+	await get_tree().create_timer(1, true).timeout
 	remaining_cyberattacks = $Cyberattacks.get_child_count()
 
 func _on_defender_power_changed(new_power: int) -> void:

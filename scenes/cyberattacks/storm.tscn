@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce2jgh7h5al1l"]
+[gd_scene load_steps=6 format=3 uid="uid://ce2jgh7h5al1l"]
 
 [ext_resource type="Script" path="res://scripts/cyberattacks/storm.gd" id="1_1y44m"]
 [ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://assets/materials/red.tres" id="2_wkjem"]
@@ -8,22 +8,34 @@
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
 material = ExtResource("2_wkjem")
 
+[sub_resource type="BoxMesh" id="BoxMesh_y1mri"]
+material = ExtResource("2_wkjem")
+size = Vector3(0.25, 1, 0.25)
+
 [node name="STORM" type="CharacterBody3D" groups=["cyberattack"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_1y44m")
-attack_strength = 100.0
+attack_strength = 1000.0
 attack_range = 1.0
 initial_attack_cooldown = 5.0
-movement_speed = 0.5
-max_integrity = 1000.0
-current_integrity = 1000.0
+movement_speed = 1.0
+max_integrity = 5000.0
+current_integrity = 5000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_saqcw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_o3q0d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.5, 0.5, 0)
+mesh = SubResource("BoxMesh_y1mri")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0.5, 0.5, 0)
+mesh = SubResource("BoxMesh_y1mri")
 
 [connection signal="attack_queued" from="." to="." method="_on_attack_queued"]
 [connection signal="destroyed" from="." to="." method="_on_destroyed"]

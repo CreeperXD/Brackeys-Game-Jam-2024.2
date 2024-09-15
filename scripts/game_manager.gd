@@ -22,13 +22,13 @@ var waves: Dictionary = {
 	2: {
 		1: {
 			"cyberattack": BruteForce,
-			"amount": 50,
-			"spawn_start_time": 0,
+			"amount": 25,
+			"spawn_start_time": 0.0,
 			"spawn_duration": 10.0
 		},
 		2: {
 			"cyberattack": BruteForce,
-			"amount": 50,
+			"amount": 25,
 			"spawn_start_time": 10.0,
 			"spawn_duration": 5.0
 		}
@@ -37,19 +37,45 @@ var waves: Dictionary = {
 		1: {
 			"cyberattack": Grenadier,
 			"amount": 25,
-			"spawn_start_time": 0,
+			"spawn_start_time": 0.0,
+			"spawn_duration": 10.0
+		},
+		2: {
+			"cyberattack": BruteForce,
+			"amount": 25,
+			"spawn_start_time": 5.0,
+			"spawn_duration": 10.0
+		}
+	},
+	4: {
+		1: {
+			"cyberattack": Grenadier,
+			"amount": 10,
+			"spawn_start_time": 0.0,
 			"spawn_duration": 10.0
 		},
 		2: {
 			"cyberattack": Grenadier,
-			"amount": 25,
-			"spawn_start_time": 0.0,
-			"spawn_duration": 5.0
+			"amount": 10,
+			"spawn_start_time": 2.0,
+			"spawn_duration": 10.0
 		},
 		3: {
-			"cyberattack": BruteForce,
-			"amount": 50,
-			"spawn_start_time": 5.0,
+			"cyberattack": Grenadier,
+			"amount": 10,
+			"spawn_start_time": 4.0,
+			"spawn_duration": 10.0
+		},
+		4: {
+			"cyberattack": Grenadier,
+			"amount": 10,
+			"spawn_start_time": 6.0,
+			"spawn_duration": 10.0
+		},
+		5: {
+			"cyberattack": Grenadier,
+			"amount": 10,
+			"spawn_start_time": 8.0,
 			"spawn_duration": 10.0
 		}
 	}

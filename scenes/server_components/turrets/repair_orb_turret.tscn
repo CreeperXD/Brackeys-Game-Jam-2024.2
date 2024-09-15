@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/server_components/turrets/repair_orb_turret.gd" id="1_35vii"]
 [ext_resource type="PackedScene" uid="uid://e8ubj14ig6j7" path="res://scenes/projectiles/repair_orb.tscn" id="2_exxhc"]
 [ext_resource type="Material" uid="uid://t7nonaff8af6" path="res://assets/materials/green.tres" id="3_4015p"]
-[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://assets/materials/magenta.tres" id="3_tqmav"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="3_x6het"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
-material = ExtResource("3_tqmav")
+material = ExtResource("3_x6het")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvg6w"]
 material = ExtResource("3_4015p")

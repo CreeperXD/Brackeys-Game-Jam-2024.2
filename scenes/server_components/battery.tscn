@@ -1,24 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://boygbm3lp8ymk"]
+[gd_scene load_steps=7 format=3 uid="uid://boygbm3lp8ymk"]
 
 [ext_resource type="Script" path="res://scripts/server_components/battery.gd" id="1_itvuk"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="2_muns3"]
+[ext_resource type="Material" uid="uid://drinu85m18x04" path="res://assets/materials/yellow.tres" id="3_70olm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r63j3"]
-albedo_color = Color(1, 1, 0, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
-material = SubResource("StandardMaterial3D_r63j3")
+material = ExtResource("2_muns3")
+
+[sub_resource type="BoxMesh" id="BoxMesh_g2rcq"]
+material = ExtResource("3_70olm")
+size = Vector3(1.25, 0.25, 1.25)
 
 [node name="Battery" type="CharacterBody3D" groups=["battery", "server_component"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_itvuk")
+max_integrity = 250.0
+current_integrity = 250.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_saqcw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_o3q0d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_g2rcq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = SubResource("BoxMesh_g2rcq")
 
 [connection signal="destroyed" from="." to="." method="_on_destroyed"]

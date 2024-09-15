@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/server_components/turrets/laser_beam_turret.gd" id="1_8g431"]
 [ext_resource type="PackedScene" uid="uid://rbn50pjh8bmk" path="res://scenes/projectiles/laser_beam.tscn" id="2_lkucm"]
-[ext_resource type="Material" uid="uid://bsh2jf6bu2upu" path="res://assets/materials/magenta.tres" id="3_6q3qu"]
+[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="3_27y2c"]
 [ext_resource type="Material" uid="uid://by3frl7c3fvuk" path="res://assets/materials/red.tres" id="4_pqlws"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_o3q0d"]
-material = ExtResource("3_6q3qu")
+material = ExtResource("3_27y2c")
 
 [sub_resource type="BoxMesh" id="BoxMesh_dvg6w"]
 material = ExtResource("4_pqlws")
@@ -20,8 +20,10 @@ collision_mask = 0
 script = ExtResource("1_8g431")
 laser_beam_scene = ExtResource("2_lkucm")
 cost = 5
-attack_strength = 100.0
+attack_strength = 50.0
 initial_attack_cooldown = 0.5
+projectile_speed = 100.0
+projectile_lifetime = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_saqcw")

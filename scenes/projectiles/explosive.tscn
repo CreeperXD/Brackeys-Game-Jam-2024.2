@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0otwo13tech4"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/explosive.gd" id="1_qll6u"]
-[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="2_2vda1"]
+[ext_resource type="Material" uid="uid://drinu85m18x04" path="res://assets/materials/yellow.tres" id="2_yha7y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0ovrb"]
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fc7mt"]
-material = ExtResource("2_2vda1")
+material = ExtResource("2_yha7y")
 size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ure2f"]
@@ -35,5 +35,10 @@ monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionArea"]
 shape = SubResource("SphereShape3D_ure2f")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+light_energy = 10.0
+omni_range = 10.0
 
 [connection signal="body_entered" from="ExplosionArea" to="." method="_on_explosion_area_body_entered"]

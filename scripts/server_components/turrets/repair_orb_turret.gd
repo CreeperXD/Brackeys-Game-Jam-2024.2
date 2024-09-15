@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 
 func _on_attack_queued() -> void:
 	var repair_orb: RepairOrb = repair_orb_scene.instantiate()
-	repair_orb.initialise($FirePoint.global_position, target_server_component, attack_strength, 25, 5)
+	repair_orb.initialise($FirePoint.global_position, target_server_component, attack_strength, projectile_speed, projectile_lifetime)
 	get_parent().add_child(repair_orb)
 
 func _on_destroyed() -> void:

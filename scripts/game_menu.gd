@@ -11,9 +11,6 @@ func _input(event: InputEvent) -> void:
 func _on_resume_button_pressed() -> void:
 	hide_pause_menu()
 
-func _on_main_menu_button_pressed() -> void:
-	pass # Replace with function body.
-
 func _on_restart_button_pressed() -> void:
 	get_tree().paused = false
 	get_tree().reload_current_scene()
@@ -36,17 +33,17 @@ func hide_pause_menu() -> void:
 
 func update_wave_label(seconds: float, wave: int) -> void:
 	if seconds > 0:
-		$WaveLabel.text = "Next wave in " + str(ceil(seconds)) + " seconds"
+		$WaveLabel.text = "Next wave in " + str(ceil(seconds)) + " seconds, ability to place turrets will be disabled"
 	else:
 		$WaveLabel.text = "Wave " + str(wave)
 
 func update_power_label(power: int) -> void:
-	$Power/Label.text = str(power)
+	$TurretSpawningInfo/Power/Label.text = str(power)
 
 func show_game_over_menu(type: String) -> void:
 	$GameOverMenu.show()
 	if type == "won":
-		$GameOverMenu/ColorRect.color = Color.GREEN
+		$GameOverMenu/ColorRect.color = Color(50, 200, 50, 255)
 		$GameOverMenu/Label.text = "You successfully repelled S.T.O.R.M. and its forces"
 	else:
 		$GameOverMenu/ColorRect.color = Color.RED

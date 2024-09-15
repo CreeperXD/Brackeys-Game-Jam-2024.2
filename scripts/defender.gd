@@ -93,3 +93,7 @@ func raycast() -> Dictionary:
 	
 	var space_state: PhysicsDirectSpaceState3D = get_world_3d().direct_space_state
 	return space_state.intersect_ray(query)
+
+#TODO: create main screen
+#TODO: finish waves
+#TODO: if have time, add music and sfx

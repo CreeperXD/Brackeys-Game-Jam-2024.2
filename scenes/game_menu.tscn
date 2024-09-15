@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cypfdlkddhmmd"]
+[gd_scene load_steps=4 format=3 uid="uid://cypfdlkddhmmd"]
 
 [ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_y0o8n"]
-[ext_resource type="Texture2D" uid="uid://bxos44y4fbqet" path="res://icon.svg" id="2_pp7vw"]
+[ext_resource type="Texture2D" uid="uid://caqo7btl22q8t" path="res://assets/sprites/crosshair.png" id="3_8op8x"]
+[ext_resource type="Texture2D" uid="uid://bxssg43m5i4mi" path="res://assets/sprites/power.png" id="3_p1k60"]
 
 [node name="GameMenu" type="CanvasLayer"]
 script = ExtResource("1_y0o8n")
@@ -14,12 +15,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Power" type="Control" parent="TurretSpawningInfo"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 25.0
+offset_right = 125.0
+offset_bottom = 100.0
+
+[node name="Label" type="Label" parent="TurretSpawningInfo/Power"]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 50.0
+offset_bottom = 50.0
+text = "69"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PowerIcon" type="Sprite2D" parent="TurretSpawningInfo/Power/Label"]
+position = Vector2(57, 13)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_p1k60")
+
 [node name="Deselect" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 100.0
+offset_left = 25.0
 offset_top = 100.0
-offset_right = 200.0
+offset_right = 125.0
 offset_bottom = 200.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -37,10 +59,10 @@ autowrap_mode = 3
 [node name="LaserBeamTurret" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 300.0
-offset_top = 100.0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_left = 25.0
+offset_top = 200.0
+offset_right = 125.0
+offset_bottom = 300.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -51,16 +73,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "1: laser beam turret"
+text = "1: laser beam turret
+5"
 autowrap_mode = 3
+
+[node name="PowerIcon" type="Sprite2D" parent="TurretSpawningInfo/LaserBeamTurret"]
+position = Vector2(37.8, 62.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_p1k60")
 
 [node name="ExplosiveTurret" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 500.0
-offset_top = 100.0
-offset_right = 600.0
-offset_bottom = 200.0
+offset_left = 25.0
+offset_top = 300.0
+offset_right = 125.0
+offset_bottom = 400.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -72,16 +100,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "2: explosive turret
-"
+10"
 autowrap_mode = 3
+
+[node name="PowerIcon" type="Sprite2D" parent="TurretSpawningInfo/ExplosiveTurret"]
+position = Vector2(37.8, 62.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_p1k60")
 
 [node name="RepairOrbTurret" type="Control" parent="TurretSpawningInfo"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 664.0
-offset_top = 100.0
-offset_right = 764.0
-offset_bottom = 200.0
+offset_left = 25.0
+offset_top = 400.0
+offset_right = 125.0
+offset_bottom = 500.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -92,16 +125,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "3: repair orb turret"
+text = "3: repair orb turret
+5"
 autowrap_mode = 3
+
+[node name="PowerIcon" type="Sprite2D" parent="TurretSpawningInfo/RepairOrbTurret/Label"]
+position = Vector2(37, 63)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_p1k60")
 
 [node name="PauseInfo" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 664.0
-offset_top = 100.0
-offset_right = 764.0
-offset_bottom = 200.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -100.0
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -110,13 +153,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 359.0
-offset_top = -85.0
-offset_right = 359.0
-offset_bottom = -85.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Esc or P: Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="Crosshair" type="Control" parent="."]
@@ -129,39 +170,20 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Crosshair"]
-scale = Vector2(0.5, 0.05)
-texture = ExtResource("2_pp7vw")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Crosshair"]
-scale = Vector2(0.05, 0.5)
-texture = ExtResource("2_pp7vw")
+[node name="Crosshair" type="Sprite2D" parent="Crosshair"]
+texture = ExtResource("3_8op8x")
 
 [node name="WaveLabel" type="Label" parent="."]
-offset_left = 861.0
-offset_top = 116.0
-offset_right = 1042.0
-offset_bottom = 139.0
-text = "Next wave in 0 seconds"
-
-[node name="Power" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Icon" type="Sprite2D" parent="Power"]
-position = Vector2(140, 71)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_pp7vw")
-
-[node name="Label" type="Label" parent="Power"]
-layout_mode = 0
-offset_left = 85.0
-offset_top = 57.0
-offset_right = 125.0
-offset_bottom = 80.0
-text = "69"
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_bottom = 100.0
+grow_horizontal = 0
+text = "Next wave in 0 seconds, ability to place turrets will be disabled"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 2
@@ -212,7 +234,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Resume"
 
-[node name="MainMenuButton" type="Button" parent="PauseMenu"]
+[node name="RestartButton" type="Button" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -225,7 +247,7 @@ offset_right = 235.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Main menu"
+text = "Restart"
 
 [node name="GameOverMenu" type="Control" parent="."]
 process_mode = 2
@@ -244,7 +266,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0.0392157, 1)
+color = Color(0.196078, 0.784314, 0.196078, 1)
 
 [node name="Label" type="Label" parent="GameOverMenu"]
 layout_mode = 1
@@ -268,30 +290,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -235.0
+offset_left = -35.0
 offset_top = -15.5
-offset_right = -165.0
+offset_right = 35.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Restart"
 
-[node name="MainMenuButton" type="Button" parent="GameOverMenu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 165.0
-offset_top = -15.5
-offset_right = 235.0
-offset_bottom = 15.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Main menu"
-
 [connection signal="pressed" from="PauseMenu/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PauseMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PauseMenu/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="GameOverMenu/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

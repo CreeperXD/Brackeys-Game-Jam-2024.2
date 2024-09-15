@@ -6,6 +6,8 @@ signal attack_queued
 @export var attack_strength: float = 25
 @export var attack_range: float = 25
 @export var initial_attack_cooldown: float = 1
+@export var projectile_speed: float = 50
+@export var projectile_lifetime: float = 5
 
 var current_attack_cooldown: float = 0:
 	set(value):

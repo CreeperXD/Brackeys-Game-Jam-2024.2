@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _on_attack_queued() -> void:
 	var explosive: Explosive = explosive_scene.instantiate()
-	explosive.initialise($FirePoint.global_position, target, rotation, attack_strength, 25, 5)
+	explosive.initialise($FirePoint.global_position, target, rotation, attack_strength, projectile_speed, projectile_lifetime)
 	get_parent().add_child(explosive)
 
 func _on_destroyed() -> void:

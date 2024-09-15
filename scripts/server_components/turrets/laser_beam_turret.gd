@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func _on_attack_queued() -> void:
 	var laser_beam: LaserBeam = laser_beam_scene.instantiate()
-	laser_beam.initialise($FirePoint.global_position, target, rotation, attack_strength, 100, 1)
+	laser_beam.initialise($FirePoint.global_position, target, rotation, attack_strength, projectile_speed, projectile_lifetime)
 	get_parent().add_child(laser_beam)
 
 func _on_destroyed() -> void:

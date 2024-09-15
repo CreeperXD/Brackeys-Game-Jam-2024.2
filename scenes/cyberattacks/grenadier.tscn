@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/cyberattacks/grenadier.gd" id="1_oa2l3"]
 [ext_resource type="PackedScene" uid="uid://d0otwo13tech4" path="res://scenes/projectiles/explosive.tscn" id="2_7ujip"]
-[ext_resource type="Material" uid="uid://ddgc3o7ox1qup" path="res://assets/materials/blue.tres" id="2_bi3fc"]
+[ext_resource type="Material" uid="uid://drinu85m18x04" path="res://assets/materials/yellow.tres" id="3_ts1vc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_saqcw"]
 
@@ -13,7 +13,7 @@ albedo_color = Color(0.392157, 0, 0.392157, 1)
 material = SubResource("StandardMaterial3D_glia6")
 
 [sub_resource type="BoxMesh" id="BoxMesh_2o2a2"]
-material = ExtResource("2_bi3fc")
+material = ExtResource("3_ts1vc")
 size = Vector3(0.5, 0.5, 0.5)
 
 [node name="Grenadier" type="CharacterBody3D" groups=["cyberattack"]]
@@ -21,6 +21,7 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_oa2l3")
 explosive_scene = ExtResource("2_7ujip")
+initial_attack_cooldown = 2.0
 max_integrity = 25.0
 current_integrity = 25.0
 

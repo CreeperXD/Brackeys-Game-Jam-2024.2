@@ -84,6 +84,15 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 100, 0
 transform = Transform3D(0.866025, -2.18557e-08, 0.5, -0.482963, 0.258819, 0.836516, -0.12941, -0.965926, 0.224144, 0, 100, 0)
 visible = false
 
+[node name="STORM" parent="." instance=ExtResource("3_gk7m6")]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 7, 0.5, 12)
+
+[node name="BruteForce" parent="." instance=ExtResource("2_up6e6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 0.5, 25)
+
+[node name="Grenadier" parent="." instance=ExtResource("9_dbxyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.5, 43)
+
 [connection signal="timeout" from="NextWaveTimer" to="." method="_on_next_wave_timer_timeout"]
 [connection signal="power_changed" from="Defender" to="." method="_on_defender_power_changed"]
 [connection signal="destroyed" from="CPU" to="." method="_on_cpu_destroyed"]

@@ -13,7 +13,7 @@ config_version=5
 config/name="Brackeys Game Jam 2024.2"
 run/main_scene="res://scenes/world_server.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/sprites/thumbnail.png"
 
 [autoload]
 
